@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation"
 
-export const dynamicParams = true
+// export const dynamicParams = true
 
 // export async function generateStaticParams() {
-//     const res = await fetch('http://localhost:3000/api/tickets')
 
-//     const { members } = await res.json()
+//     const res = await fetch('http://localhost:3000/api/tickets')
+//     const members = await res.json()
 
 //     return members.map((member) => ({
 //         id: member._id
@@ -13,7 +13,7 @@ export const dynamicParams = true
 // }
 
 async function getOneMember(id) {
-    const res = await fetch(`http://localhost:3000/api/tickets/${id}` , {
+    const res = await fetch(`http://localhost:3000/api/tickets/${id}`, {
         next: {
             revalidate: 60 // use 0 to opt out of using cache
         }
@@ -27,8 +27,8 @@ async function getOneMember(id) {
 }
 
 export default async function MemberDetails({ params }) {
-    const { id } = params
-    const { member } = await getOneMember(id)
+    // const { id } = params
+    const { member } = await getOneMember(params.id)
 
     return (
         <main>

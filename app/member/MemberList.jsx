@@ -19,7 +19,6 @@ export default async function MemberList() {
         <div key={member.id} className='card my-5'>
           <Link href={`/member/${member._id}`}>
             <h3>{member.title}</h3>
-            <p>Written By <span className="font-bold">{member.name}</span></p>
             <p>{member.body.slice(0, 200)}...</p>
           </Link>
         </div>
